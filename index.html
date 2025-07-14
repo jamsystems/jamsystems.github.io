@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<script src='https://d3js.org/d3.v5.min.js'></script>
+<style> rect {fill: lightblue; stroke: black; }</style>
+<body>
+<div id="tooltip" style="opacity:0; position:absolute; background:white; border:1px solid black; padding:5px;"></div>
+<svg width=300 height=300>
+</svg>
+<script>
+var data = [4,8,15,16,23,42]
+
+
+width = 200
+height = 200
+margin = 50
+    
+
+xdomain = [0,5]
+xrange = [0,166.666667]
+ydomain = [0,42]
+yrange = [200,0]
+xs = d3.scaleLinear().domain(xdomain).range(xrange)
+ys = d3.scaleLinear().domain(ydomain).range(yrange)
+    
+tooltip = d3.select('#tooltip')
+
+var x = d3.scaleBand().domain([0,1,2,3,4,5]).range([0,200])
+var y = d3.scaleLinear().domain(ydomain).range(yrange)
+d3.select('svg')
+    .attr('width', width + 2 * margin)
+    .attr('height', height + 2 * margin)
+    .append('g')
+        .attr('transform','translate('+margin+','+margin+')')
+        .selectAll('rect')
+        .data(data)
+        .enter()
+        .append('rect')
+            .attr('x',function(d, i) {return xs(i);})
+            .attr('y',function(d,i) {return ys(d);})
+            .attr('width',33.3333)
+            .attr('height',function(d,i) {return 200-ys(d);})
+        .on('mouseover', function(d, i) {
+            tooltip.style('opacity', 1)
+                .style('left', (d3.event.pageX)+'px')
+                .style('top',(d3.event.pageY)+'px')
+                .html('Item #'+i+' is '+d)
+        .on('mouseout', function(d, i) {
+            tooltip.style('opacity', 0)
+        })
+    })
+
+    
+d3.select('svg').append('g')
+    .attr('transform','translate('+margin+','+margin+')')
+    .call(d3.axisLeft(y))
+    
+d3.select('svg').append('g')
+    .attr('transform','translate('+margin+','+(height+margin)+')')
+    .call(d3.axisBottom(x))
+
+
+
+</script>
+</body>
+</html>
