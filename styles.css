@@ -1,0 +1,125 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f560;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.808);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.navigation {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.nav-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+.nav-button.active {
+    background-color: #28a745;
+}
+
+.nav-button:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.nav-button:disabled:hover {
+    background-color: #6c757d;
+}
+
+.scene {
+    display: none;
+}
+
+.scene.active {
+    display: block;
+}
+
+.scene-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.scene-description {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+
+.chart-container {
+    text-align: center;
+}
+
+.axis-label {
+    font-size: 14px;
+    fill: #666;
+}
+
+.tooltip {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.line {
+    fill: none;
+    stroke-width: 2;
+}
+
+.brush .selection {
+    fill: rgba(0, 123, 255, 0.15);
+    stroke: #007bff;
+    stroke-width: 2;
+    stroke-dasharray: 3,3;
+}
+
+.brush .handle {
+    fill: #007bff;
+    opacity: 0.8;
+}
+
+.overlay-line {
+    fill: none;
+    stroke-width: 2;
+    opacity: 0.8;
+}
