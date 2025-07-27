@@ -1,7 +1,83 @@
 <!DOCTYPE html>
 <html>
+<head>
+    <meta charset="utf-8">
+    <title>SPY Market Analysis - Narrative Visualization</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
 <body>
-  
-test
+    <div class="container">
+        <h1>SPY Market Analysis</h1>
+        <p class="subtitle">A narrative visualization exploring S&P 500 performance and volatility</p>
+        
+        <div class="navigation">
+            <button class="nav-button active" onclick="showScene(1)">Scene 1: Time Animation</button>
+            <button class="nav-button" onclick="showScene(2)">Scene 2: VIX Animation</button>
+            <button class="nav-button" onclick="showScene(3)">Scene 3: Explore</button>
+        </div>
+        
+        <div id="scene1" class="scene active">
+            <div class="scene-title">Scene 1: Time Period Analysis - Animated Evolution</div>
+            <div class="scene-description">
+                Watch as we step through 25 years of market history, showing how SPY price and VIX behavior evolved over time. The animation will automatically progress through different time periods.  The second chart will show the return distribution analysis for the given time periods.
+            </div>
+            <div class="animation-controls" style="text-align: center; margin: 15px 0;">
+                <button id="play-time-btn" class="nav-button">Play Animation</button>
+                <button id="pause-time-btn" class="nav-button">Pause</button>
+                <button id="reset-time-btn" class="nav-button">Reset</button>
+                <span id="time-period-label" style="margin-left: 20px; font-weight: bold;">Time Period: --</span>
+            </div>
+            <div class="chart-container">
+                <svg id="shared-chart" width="1000" height="500"></svg>
+            </div>
+            <div id="volatility-stats" style="text-align: center; margin: 20px 0; font-size: 16px; font-weight: bold; min-height: 80px;">
+                <span id="avg-vol">--</span>
+            </div>
+            <div class="chart-container">
+                <svg id="distribution-chart" width="1000" height="400"></svg>
+            </div>
+        </div>
+        
+        <div id="scene2" class="scene">
+            <div class="scene-title">Scene 2: VIX Level Analysis - Animated Progression</div>
+            <div class="scene-description">
+                Watch as we step through different VIX fear levels from low to high, showing how market returns behave under different volatility regimes. The animation progresses through 10% data chunks by VIX level.  The second chart will show the return distribution analysis for the given VIX levels.
+            </div>
+            <div class="animation-controls" style="text-align: center; margin: 15px 0;">
+                <button id="play-vix-btn" class="nav-button">Play Animation</button>
+                <button id="pause-vix-btn" class="nav-button">Pause</button>
+                <button id="reset-vix-btn" class="nav-button">Reset</button>
+                <span id="vix-level-label" style="margin-left: 20px; font-weight: bold;">VIX Range: --</span>
+            </div>
+            <div class="chart-container">
+            </div>
+            <div id="volatility-stats2" style="text-align: center; margin: 20px 0; font-size: 16px; font-weight: bold; min-height: 80px;">
+                Average VIX: <span id="avg-vol2">--</span>
+            </div>
+            <div class="chart-container">
+                <svg id="distribution-chart2" width="1000" height="400"></svg>
+            </div>
+        </div>
+        
+        <div id="scene3" class="scene">
+            <div class="scene-title">Scene 3: Interactive Exploration</div>
+            <div class="scene-description">
+                Explore the data yourself! Use the 2D brush to select both a time period AND VIX range to see how different market conditions affect return distributions. Compare actual returns against theoretical normal distributions.
+            </div>
+            <div class="chart-container">
+            </div>
+            <div id="volatility-stats3" style="text-align: center; margin: 20px 0; font-size: 16px; font-weight: bold; min-height: 80px;">
+                Average VIX: <span id="avg-vol3">--</span>
+            </div>
+            <div class="chart-container">
+                <svg id="distribution-chart3" width="1000" height="400"></svg>
+            </div>
+        </div>
+        
+        <div class="tooltip" id="tooltip"></div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
